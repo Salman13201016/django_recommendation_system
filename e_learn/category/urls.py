@@ -19,7 +19,7 @@ from . import views as v
  
 urlpatterns = [
     # path("admin/", admin.site.urls),
-    path("cat/",v.index),
+    path("index/",v.index,name='cat_index'),
     path("insert/",v.insert, name='cat_insert')
 
 ]

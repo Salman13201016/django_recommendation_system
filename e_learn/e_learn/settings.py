@@ -19,6 +19,7 @@ import os
 
 template_dir = os.path.join(BASE_DIR,'templates')
 static_dir = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,8 +43,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'category'
+    'category',
+    'ckeditor'
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # You can customize the toolbar buttons here.
+        'height': 300,      # Set the initial height of the CKEditor.
+        # ... Other options ...
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

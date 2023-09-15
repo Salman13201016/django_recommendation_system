@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-import category
+import category, course
  
 urlpatterns = [
     # path("admin/", admin.site.urls),
-    path("admin/",include('category.urls'))
+    path("admin/cat",include('category.urls')),
+    path("admin/course/",include('course.urls'))
 
 ]
