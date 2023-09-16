@@ -16,7 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 template_dir = os.path.join(BASE_DIR,'templates')
 static_dir = os.path.join(BASE_DIR,'static')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -44,7 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'category',
-    'ckeditor'
+    'ckeditor',
+    'course'
 ]
 
 CKEDITOR_CONFIGS = {

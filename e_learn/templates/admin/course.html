@@ -250,11 +250,11 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Course Category</h4>
-                  <form method="post"  enctype="multipart/form-data">
+                  <form method="post" action="{% url 'course_insert' %}"  enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="exampleInputName1">Select Course Category</label>
-                        <select  class="form-control" id="exampleInputName1" name="course_name">
+                        <select  class="form-control" id="exampleInputName1" name="cat_id">
                             <option >Select Category</option>
                             {% for i in data %}
                             <option value="{{i.id}}">{{i.name}}</option>
