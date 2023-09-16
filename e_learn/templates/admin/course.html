@@ -250,16 +250,51 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Course Category</h4>
-                  <form  enctype="multipart/form-data">
+                  <form method="post"  enctype="multipart/form-data">
                     {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputName1">Select Course Category</label>
+                        <select  class="form-control" id="exampleInputName1" name="course_name">
+                            <option >Select Category</option>
+                            {% for i in data %}
+                            <option value="{{i.id}}">{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+
+                      </div>
                     <div class="form-group">
                       <label for="exampleInputName1">Course Name</label>
                       <input type="text" class="form-control" id="exampleInputName1" placeholder="Course Name" name="course_name">
-                      <textarea name="content" id="id_content"></textarea>
-                    <script>
-                        CKEDITOR.replace('id_content');  // Replace the textarea with CKEditor.
-                    </script>
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName1">Course Description</label>
+                        <textarea name="desciption" id="id_content"></textarea>
+                      <script>
+                          CKEDITOR.replace('id_content');  // Replace the textarea with CKEditor.
+                      </script>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Course Actual Fee</label>
+                        <input type="number" class="form-control" id="exampleInputName1" placeholder="Actual Fee" name="course_fee">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Discount (%)</label>
+                        <input type="number" class="form-control" id="exampleInputName1" placeholder="Discount in %" name="discount">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Course Image</label>
+                        <input type="file" class="form-control" id="exampleInputName1" name="img">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Course Module</label>
+                        <textarea name="module" id="id_content1"></textarea>
+                      <script>
+                          CKEDITOR.replace('id_content1');  // Replace the textarea with CKEditor.
+                      </script>
+                      </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>
                 </div>

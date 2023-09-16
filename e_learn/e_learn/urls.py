@@ -19,7 +19,7 @@ import category, course
  
 urlpatterns = [
     # path("admin/", admin.site.urls),
-    path("admin/cat",include('category.urls')),
+    path("admin/cat/",include('category.urls')),
     path("admin/course/",include('course.urls'))
 
 ]
