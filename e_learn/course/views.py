@@ -14,8 +14,9 @@ def insert(request):
     description = request.POST.get('desciption')
     fee = request.POST.get('course_fee')
     discount = request.POST.get('discount')
-    image = request.FILES.get('image')
+    image = request.FILES.get('img')
     module = request.POST.get('module')
+    print("sss",image)
     category = categories.objects.get(pk=cat_id)
     course_obj = courses()
     course_obj.name = name
