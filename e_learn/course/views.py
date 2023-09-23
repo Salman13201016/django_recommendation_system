@@ -16,10 +16,10 @@ def insert(request):
     discount = request.POST.get('discount')
     image = request.FILES.get('image')
     module = request.POST.get('module')
-
+    category = categories.objects.get(pk=cat_id)
     course_obj = courses()
     course_obj.name = name
-    course_obj.cat_id = cat_id
+    course_obj.cat_id = category
     course_obj.description = description
     course_obj.fee = fee
     course_obj.discount = discount
