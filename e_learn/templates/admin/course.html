@@ -301,6 +301,77 @@
               </div>
             </div>
 
+            <div class="col-lg-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Course Information</h4>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            #
+                          </th>
+                          <th>
+                            Category
+                          </th>
+                          <th>
+                            Course Name
+                          </th>
+                          <th>
+                            Description
+                          </th>
+                          <th>
+                            Actual Fee
+                          </th>
+                          <th>
+                            discount
+                          </th>
+                          <th>
+                            Image
+                          </th>
+                          <th>
+                            Module
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for i in course_data %}
+                        <tr class="table-info">
+                          <td>
+                            {{forloop.counter}}
+                          </td>
+                          <td>
+                            {{i.cat_id}}
+                          </td>
+                          <td>
+                            {{i.name}}
+                          </td>
+                          <td>
+                            {{i.description}}
+                          </td>
+                          <td>
+                            {{i.fee}}
+                          </td>
+                          <td>
+                            {{i.discount}}
+                          </td>
+                          <td>
+                            <img src="/media/{{ i.image }}">
+                            {{i.image}}
+                          </td>
+                          <td>
+                            {{i.module}}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <!-- content-wrapper ends -->

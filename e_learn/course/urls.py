@@ -25,5 +25,4 @@ urlpatterns = [
     # path("admin/", admin.site.urls),
     path("index/",v.index,name='course_index'),
     path("insert/",v.insert,name='course_insert')
-
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

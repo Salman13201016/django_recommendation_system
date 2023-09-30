@@ -5,9 +5,12 @@ from .models import courses
 # Create your views here.
 
 def index(request):
+
     all_data = categories.objects.all()
-    data = {"data":all_data}
+    all_course = courses.objects.all()
+    data = {"data":all_data,"course_data":all_course}
     return render(request,'admin/course.html',data)
+
 def insert(request):
     cat_id = request.POST.get('cat_id')
     name = request.POST.get('course_name')
