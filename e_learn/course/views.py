@@ -7,7 +7,7 @@ from .models import courses
 def index(request):
 
     all_data = categories.objects.all()
-    all_course = courses.objects.all()
+    all_course = courses.objects.all().prefetch_related('cat_id')
     data = {"data":all_data,"course_data":all_course}
     return render(request,'admin/course.html',data)
 
