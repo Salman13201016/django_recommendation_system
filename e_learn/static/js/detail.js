@@ -1,9 +1,28 @@
 $(document).ready(function () {
+    // localStorage.clear()
     quant_value = 0
-    quant = parseInt($('#quant_input_value').val());
-    price = parseFloat($('.price_box_main').text())
-    $('.basket-item-count span').text(quant)
-    $('.total-price .value').text(quant * price)
+    // quant = parseInt($('#quant_input_value').val());
+    // price = parseFloat($('.price_box_main').text())
+    // $('.basket-item-count span').text(quant)
+    // $('.total-price .value').text(quant * price)
+
+    if (localStorage.getItem('quantity')) {
+        $('.basket-item-count span').text(localStorage.getItem('quantity'))
+    }
+    else {
+        alert(1)
+        quant = parseInt($('#quant_input_value').val());
+        $('.basket-item-count span').text(quant)
+    }
+
+    if (localStorage.getItem('total_price')) {
+        $('.total-price .value').text(localStorage.getItem('total_price'))
+    }
+    else {
+        alert(2)
+        price = parseFloat($('.price_box_main').text())
+        $('.total-price .value').text(quant * price)
+    }
     $('.arrow_plus').click(function () {
         quant = parseInt($('#quant_input_value').val());
         quant = quant + 1;
@@ -48,6 +67,12 @@ $(document).ready(function () {
         price = parseFloat($('.price_box_main').text())
         $('.basket-item-count span').text(quant)
         $('.total-price .value').text(quant * price)
+        title = $("#course_title").text()
+
+        localStorage.setItem('title', title)
+        localStorage.setItem('quantity', quant)
+        localStorage.setItem('price', price)
+        localStorage.setItem('total_price', quant * price)
 
 
         // alert(quant)

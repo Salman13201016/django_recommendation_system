@@ -117,3 +117,6 @@ def detail(request,id):
     # course_data = zip_longest(course_obj, discount_fee_list)
     # all_data = {'course':course_data}
     # return render(request,'user/product.html',all_data)
+
+def cart(request,id=None):
+    return render(request,'user/shopping-cart.html')

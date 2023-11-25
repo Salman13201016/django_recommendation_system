@@ -131,7 +131,7 @@
 					<!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
 
 	<div class="dropdown dropdown-cart">
-		<a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
+		<a href="{% url 'cart' %}" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
 			<div class="items-cart-inner">
             <div class="basket">
 					<i class="glyphicon glyphicon-shopping-cart"></i>
@@ -764,7 +764,7 @@
 </div><!-- /.gallery-holder -->        			
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
-							<h1 class="name">{{course.name}}</h1>
+							<h1 class="name" id="course_title">{{course.name}}</h1>
 							
 							<div class="rating-reviews m-t-20">
 								<div class="row">

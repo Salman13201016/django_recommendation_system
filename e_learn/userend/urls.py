@@ -25,5 +25,6 @@ urlpatterns = [
     # path("admin/", admin.site.urls),
     path("",v.home,name='home'),
     path("prod/list/<int:id>",v.prod_list,name='prod_list'),
-    path("product/detail/<int:id>",v.detail,name='product_detail')
+    path("product/detail/<int:id>",v.detail,name='product_detail'),
+    path("add_to_cart/",v.cart,name='cart'),
 ]
