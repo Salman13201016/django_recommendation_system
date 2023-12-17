@@ -62,14 +62,28 @@ $(document).ready(function () {
 
     });
 
+
+
+    if (JSON.parse(localStorage.getItem('title'))) {
+        title_array = JSON.parse(localStorage.getItem('title'))
+        console.log("duirng loading", title_array)
+    }
+    else {
+        title_array = []
+        console.log("duirng loading", title_array)
+    }
+
     $('.add_to_cart_button').click(function () {
         quant = parseInt($('#quant_input_value').val());
         price = parseFloat($('.price_box_main').text())
         $('.basket-item-count span').text(quant)
         $('.total-price .value').text(quant * price)
         title = $("#course_title").text()
+        title_array.push(title)
 
-        localStorage.setItem('title', title)
+        console.log("after add to cart", title_array)
+
+        localStorage.setItem('title', JSON.stringify(title_array))
         localStorage.setItem('quantity', quant)
         localStorage.setItem('price', price)
         localStorage.setItem('total_price', quant * price)
