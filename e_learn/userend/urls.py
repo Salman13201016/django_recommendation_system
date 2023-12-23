@@ -27,4 +27,5 @@ urlpatterns = [
     path("prod/list/<int:id>",v.prod_list,name='prod_list'),
     path("product/detail/<int:id>",v.detail,name='product_detail'),
     path("add_to_cart/",v.cart,name='cart'),
+    path("search/",v.search,name='search_field'),
 ]

@@ -92,7 +92,7 @@
           <!-- /.contact-row --> 
           <!-- ============================================================= SEARCH AREA ============================================================= -->
           <div class="search-area">
-            <form>
+            <form method="GET" action="{% url 'search_field' %}">
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">
                   <li class="dropdown"> <a class="dropdown-toggle"  data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
@@ -105,8 +105,8 @@
                     </ul>
                   </li>
                 </ul>
-                <input class="search-field" placeholder="Search here..." />
-                <a class="search-button" href="#" ></a> </div>
+                <input class="search-field autosearch" placeholder="Search here..." name="search" />
+                <button type="submit">Search</button> </div>
             </form>
           </div>
           <!-- /.search-area --> 
@@ -2171,5 +2171,32 @@
 <script src="{% static 'assets/js/bootstrap-select.min.js' %}"></script> 
 <script src="{% static 'assets/js/wow.min.js' %}"></script> 
 <script src="{% static 'assets/js/scripts.js' %}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    url = 'search/'
+    $(".autosearch").autocomplete({
+      source:url,
+      minLength:1,
+      html:true,
+      select:function(event,ui){
+        try {
+							console.log(1)
+							alert(ui.item.value)
+							console.log("selected:", ui.item.value);
+						} catch (error) {
+							console.log(1)
+							console.error("Error logging:", error);
+						}
+      },
+      open: function(event, ui) {
+					// Correct class: .ui-autocomplete
+					$('.ui-autocomplete').css('white-space', 'pre-line');
+				}
+
+    });
+  });
+</script>
 </body>
 </html>

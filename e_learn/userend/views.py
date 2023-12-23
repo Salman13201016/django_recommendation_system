@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.utils.html import strip_tags
+from django.http import HttpResponse, JsonResponse
 
 from category.models import categories
 from course.models import courses
@@ -120,3 +121,15 @@ def detail(request,id):
 
 def cart(request,id=None):
     return render(request,'user/shopping-cart.html')
+
+from course.models import courses
+from django.db.models import Q
+
+def search(request):
+    search_value = request.GET.get('term')
+    query = courses.objects.filter(Q(name__icontains=search_value) | Q(description__icontains=search_value))
+
+    search_value = [{"label":f"{r.name}\n{r.description}"} for r in query]
+    # for i in query:
+    #     print(i.name,i.description)
+    return JsonResponse(search_value,safe=False)
