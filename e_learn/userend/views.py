@@ -129,7 +129,8 @@ def search(request):
     search_value = request.GET.get('term')
     query = courses.objects.filter(Q(name__icontains=search_value) | Q(description__icontains=search_value))
 
-    search_value = [{"label":f"{r.name}\n{r.description}"} for r in query]
+    # search_value = [{"label":f"{r.name}\n{r.description}"} for r in query]
+    search_value = [{"label":{"name": r.name, "description": r.description}} for r in query]
     # for i in query:
     #     print(i.name,i.description)
     return JsonResponse(search_value,safe=False)

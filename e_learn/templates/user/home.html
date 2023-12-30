@@ -2177,26 +2177,61 @@
   $(document).ready(function(){
     url = 'search/'
     $(".autosearch").autocomplete({
-      source:url,
+      source:function (request, response) {
+        $.ajax({
+            url: url,
+            data: { term: request.term },
+            success: function (data) {
+                response(data);
+            }
+        });
+    },
       minLength:1,
       html:true,
+      open: function(event, ui) {
+        // Correct class: .ui-autocomplete
+        var self = $(this);
+        self.autocomplete("widget").css("width", "300px"); // Adjust width as needed
+    },
       select:function(event,ui){
         try {
 							console.log(1)
-							alert(ui.item.value)
-							console.log("selected:", ui.item.value);
+
+							var selectedValue = ui.item.label.name || ui.item.label.description || '';
+              // selectedValueInput.val(selectedValue);
+              // var terms1 = this.item.value.split( /,\s*/ );
+							console.log("selected:", Object.values(ui.item.value) );
+              // console.log("selected:", ui.this );
+              $('.ui-autocomplete-input').val(ui.item.value)
+
+              if ($(ui.item.value).hasClass('name-item')) {
+                $('.autosearch').val(ui.item.label.name)
+                console.log("selected:", ui.item.label.name);
+                } else if ($(ui.item.value).hasClass('description-item')) {
+                  $('.autosearch').val(ui.item.label.description)
+                }
 						} catch (error) {
 							console.log(1)
 							console.error("Error logging:", error);
 						}
       },
-      open: function(event, ui) {
-					// Correct class: .ui-autocomplete
-					$('.ui-autocomplete').css('white-space', 'pre-line');
-				}
+      
+     
 
+    }).data("ui-autocomplete")._renderItem = function (ul, item) {
+        var nameItem = $("<li class='selected_value name-item' >").text("Name: " + item.label.name).appendTo(ul);
+        var descriptionItem = $("<li class='selected_value description-item'>").text("Description: " + item.label.description).appendTo(ul);
+
+        
+          return nameItem.add(descriptionItem);
+    };
+
+    $(".selected_value").click(function () {
+      alert("clicked")
+        var clickedText = $(this).text().split(":")[1].trim();
+        $('.autosearch').val(clickedText)
     });
-  });
+});
 </script>
 </body>
 </html>
